@@ -1,0 +1,49 @@
+---
+common::config_file_hash:
+  'passwd':
+  'shadow':
+    config_file_group: 'shadow'
+    config_file_mode:  '0640'
+common::package_list:
+  - 'colordiff'
+  - 'dcfldd'
+  - 'debian-goodies'
+  - 'deborphan'
+  - 'dstat'
+  - 'ethtool'
+  - 'htop'
+  - 'ifstat'
+  - 'iftop'
+  - 'iotop'
+  - 'ipcalc'
+  - 'iperf'
+  - 'molly-guard'
+  - 'mtr-tiny'
+  - 'nmap'
+  - 'parted'
+  - 'pwgen'
+  - 'rsync'
+  - 'sysstat'
+  - 'tcpdump'
+  - 'tree'
+  - 'unrar'
+  - 'unzip'
+common::groups_hash:
+  'docker':
+    members:
+      - 'dhoppe'
+common::users_hash:
+  'dhoppe':
+    'comment': 'Dennis Hoppe'
+    'groups':
+      - 'audio'
+      - 'cdrom'
+      - 'dip'
+      - 'floppy'
+      - 'plugdev'
+      - 'sudo'
+      - 'video'
+    'password': '$6$9zv3v3FT5qU$W/0yudPmRfUl55EaCv2nCk7eLB5TJ2YpLCRMurdR/bP2HpMbXM3eHvZmxu7JahYjFHZ1ThOkjc8KNQ3oIa1Aq1'
+    'ssh_key_options':
+      - "from=\"*.%{::domain}\""
+    'ssh_key': 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDuXXte0XbIfh7iAEjw7gNKMhNFnlNwI2yt5CR4xrDuBWqNF9JZ266R9e77Z/uo4ayev/whmk8btuw3IsYJdQ4FGwJp7yOShcOKk/Y44/7ROggM71K525MdxhlYthe2hzbFMzRw6IUvhJih81ehD/VULEIuD0nsqutrTfe2c4Dgd2BeTeKPFazyYKSdhb2NGsXwe2tEOJKpRCopmOPDGnyiLPEW7j2DX1uwBVFx/ZUh8gwEia7gLqgLeqBN30DuDk8RAO6cL0cMB7H0tPXDtq/Ooyn974pk73MXPoCkiAwe/9xROLQzqDEqf1N5t7+cDeLWaClh80scEyBTNRkoUDLR'
