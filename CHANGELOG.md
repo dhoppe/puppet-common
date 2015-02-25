@@ -1,4 +1,9 @@
-## 2015-02-25 Release 1.0.5
+## 2015-02-25 Release 1.0.2
+### Summary:
+- [Beaker] Update Beaker environment
+- [Travis CI] Update Travis CI environment
+
+## 2015-02-25 Release 1.0.1
 ### Summary:
 - [Beaker] Update Beaker environment
 - [Puppet] Add support for Debian 8.x (Jessie)
