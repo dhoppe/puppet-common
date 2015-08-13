@@ -11,6 +11,7 @@ describe 'common::define', :type => :define do
     context "on #{osfamily}" do
       context 'when source file' do
         let(:params) {{
+          :config_file_path   => '/etc/group.2nd',
           :config_file_source => 'puppet:///modules/common/etc/group',
         }}
 
@@ -25,6 +26,7 @@ describe 'common::define', :type => :define do
 
       context 'when content string' do
         let(:params) {{
+          :config_file_path   => '/etc/group.3rd',
           :config_file_string => '# THIS FILE IS MANAGED BY PUPPET',
         }}
 
@@ -39,6 +41,7 @@ describe 'common::define', :type => :define do
 
 #      context 'when content template' do
 #        let(:params) {{
+#          :config_file_path   => '/etc/group.4th',
 #          :config_file_template => 'common/etc/group.erb',
 #        }}
 #
@@ -53,6 +56,7 @@ describe 'common::define', :type => :define do
 #
 #      context 'when content template (custom)' do
 #        let(:params) {{
+#          :config_file_path         => '/etc/group.5th',
 #          :config_file_template     => 'common/etc/group.erb',
 #          :config_file_options_hash => {
 #            'key' => 'value',
