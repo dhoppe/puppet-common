@@ -11,13 +11,13 @@ matrix:
   include:
   - rvm: 1.9.3
     env: PUPPET_VERSION="~> 3.0" STRICT_VARIABLES="yes" CHECK=test
-  - rvm: 2.1.7
+  - rvm: 2.1.8
     env: PUPPET_VERSION="~> 3.0" STRICT_VARIABLES="yes" CHECK=test
   - rvm: 1.9.3
     env: PUPPET_VERSION="~> 3.0" STRICT_VARIABLES="yes" CHECK=test FUTURE_PARSER=yes
-  - rvm: 2.1.7
+  - rvm: 2.1.8
     env: PUPPET_VERSION="~> 3.0" STRICT_VARIABLES="yes" CHECK=test FUTURE_PARSER=yes
-  - rvm: 2.1.7
+  - rvm: 2.1.8
     env: PUPPET_VERSION="~> 4.0" STRICT_VARIABLES="yes" CHECK=test
   - rvm: 2.2.4
     env: PUPPET_VERSION="~> 4.0" STRICT_VARIABLES="yes" CHECK=test
@@ -34,10 +34,11 @@ deploy:
   provider: puppetforge
   user: dhoppe
   password:
-    secure: "hB9Vzxo0+kyj/FWMlKhd00e406iqo0F/P3jMcQFGxStr6bXWD8/fp5bl0R3Nr35G1RsJ/F3BF2jcs+OEWusDZ4QrFZ8NrAPnuvHsGqUE3f7Kk/HZPwYp3rFYCd+18NxfY2EsbuRSY3ktU8jLz+3CWVy3Gmw0oBxmWSbbtRCSzx0="
+    secure: ""
   on:
     tags: true
     # all_branches is required to use tags
     all_branches: true
     # Only publish if our main Ruby target builds
     rvm: 1.9.3
+    condition: "$FUTURE_PARSER = yes"
