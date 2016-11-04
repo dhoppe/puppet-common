@@ -14,63 +14,78 @@ describe 'common', type: :class do
       it { is_expected.to contain_class('common::config') }
       it { is_expected.to contain_anchor('common::end') }
 
-      # describe 'common::install' do
-      #   context 'defaults' do
-      #     it do
-      #       is_expected.to contain_package('common').with(
-      #         'ensure' => 'present',
-      #       )
-      #     end
-      #   end
+      describe 'common::install' do
+        context 'defaults' do
+          let(:params) do
+            {
+              package_name: 'colordiff'
+            }
+          end
 
-      #   context 'when package latest' do
-      #     let(:params) {{
-      #       :package_ensure => 'latest',
-      #     }}
+          it do
+            is_expected.to contain_package('common').with(
+              'ensure' => 'present'
+            )
+          end
+        end
 
-      #     it do
-      #       is_expected.to contain_package('common').with(
-      #         'ensure' => 'latest',
-      #       )
-      #     end
-      #   end
+        context 'when package latest' do
+          let(:params) do
+            {
+              package_ensure: 'latest',
+              package_name:   'colordiff'
+            }
+          end
 
-      #   context 'when package absent' do
-      #     let(:params) {{
-      #       :package_ensure => 'absent',
-      #     }}
+          it do
+            is_expected.to contain_package('common').with(
+              'ensure' => 'latest'
+            )
+          end
+        end
 
-      #     it do
-      #       is_expected.to contain_package('common').with(
-      #         'ensure' => 'absent',
-      #       )
-      #     end
-      #     it do
-      #       is_expected.to contain_file('common.conf').with(
-      #         'ensure'  => 'present',
-      #         'require' => nil,
-      #       )
-      #     end
-      #   end
+        context 'when package absent' do
+          let(:params) do
+            {
+              package_ensure: 'absent',
+              package_name:   'colordiff'
+            }
+          end
 
-      #   context 'when package purged' do
-      #     let(:params) {{
-      #       :package_ensure => 'purged',
-      #     }}
+          it do
+            is_expected.to contain_package('common').with(
+              'ensure' => 'absent'
+            )
+          end
+          it do
+            is_expected.to contain_file('common.conf').with(
+              'ensure'  => 'present',
+              'require' => nil
+            )
+          end
+        end
 
-      #     it do
-      #       is_expected.to contain_package('common').with(
-      #         'ensure' => 'purged',
-      #       )
-      #     end
-      #     it do
-      #       is_expected.to contain_file('common.conf').with(
-      #         'ensure'  => 'absent',
-      #         'require' => nil,
-      #       )
-      #     end
-      #   end
-      # end
+        context 'when package purged' do
+          let(:params) do
+            {
+              package_ensure: 'purged',
+              package_name:   'colordiff'
+            }
+          end
+
+          it do
+            is_expected.to contain_package('common').with(
+              'ensure' => 'purged'
+            )
+          end
+          it do
+            is_expected.to contain_file('common.conf').with(
+              'ensure'  => 'absent',
+              'require' => nil
+            )
+          end
+        end
+      end
 
       describe 'common::config' do
         context 'defaults' do
@@ -152,37 +167,6 @@ describe 'common', type: :class do
             )
           end
         end
-
-        # context 'when content template' do
-        #   let(:params) {{
-        #     :config_file_template => 'common/etc/group.erb',
-        #   }}
-
-        #   it do
-        #     is_expected.to contain_file('common.conf').with(
-        #       'ensure'  => 'present',
-        #       'content' => /THIS FILE IS MANAGED BY PUPPET/,
-        #       'require' => nil,
-        #     )
-        #   end
-        # end
-
-        # context 'when content template (custom)' do
-        #   let(:params) {{
-        #     :config_file_template     => 'common/etc/group.erb',
-        #     :config_file_options_hash => {
-        #       'key' => 'value',
-        #     },
-        #   }}
-
-        #   it do
-        #     is_expected.to contain_file('common.conf').with(
-        #       'ensure'  => 'present',
-        #       'content' => /THIS FILE IS MANAGED BY PUPPET/,
-        #       'require' => nil,
-        #     )
-        #   end
-        # end
       end
     end
   end
