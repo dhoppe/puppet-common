@@ -1,10 +1,12 @@
 require 'spec_helper'
 
-describe 'common', :type => :class do
+describe 'common', type: :class do
   ['Debian'].each do |osfamily|
-    let(:facts) {{
-      :osfamily => osfamily,
-    }}
+    let(:facts) do
+      {
+        osfamily: osfamily
+      }
+    end
 
     it { is_expected.to compile.with_all_deps }
     it { is_expected.to contain_anchor('common::begin') }
@@ -77,15 +79,17 @@ describe 'common', :type => :class do
           it do
             is_expected.to contain_file('common.conf').with(
               'ensure'  => 'present',
-              'require' => nil,
+              'require' => nil
             )
           end
         end
 
         context 'when source dir' do
-          let(:params) {{
-            :config_dir_source => 'puppet:///modules/common/etc',
-          }}
+          let(:params) do
+            {
+              config_dir_source: 'puppet:///modules/common/etc'
+            }
+          end
 
           it do
             is_expected.to contain_file('common.dir').with(
@@ -94,16 +98,18 @@ describe 'common', :type => :class do
               'purge'   => false,
               'recurse' => true,
               'source'  => 'puppet:///modules/common/etc',
-              'require' => nil,
+              'require' => nil
             )
           end
         end
 
         context 'when source dir purged' do
-          let(:params) {{
-            :config_dir_purge  => true,
-            :config_dir_source => 'puppet:///modules/common/etc',
-          }}
+          let(:params) do
+            {
+              config_dir_purge: true,
+              config_dir_source: 'puppet:///modules/common/etc'
+            }
+          end
 
           it do
             is_expected.to contain_file('common.dir').with(
@@ -112,35 +118,39 @@ describe 'common', :type => :class do
               'purge'   => true,
               'recurse' => true,
               'source'  => 'puppet:///modules/common/etc',
-              'require' => nil,
+              'require' => nil
             )
           end
         end
 
         context 'when source file' do
-          let(:params) {{
-            :config_file_source => 'puppet:///modules/common/etc/group',
-          }}
+          let(:params) do
+            {
+              config_file_source: 'puppet:///modules/common/etc/group'
+            }
+          end
 
           it do
             is_expected.to contain_file('common.conf').with(
               'ensure'  => 'present',
               'source'  => 'puppet:///modules/common/etc/group',
-              'require' => nil,
+              'require' => nil
             )
           end
         end
 
         context 'when content string' do
-          let(:params) {{
-            :config_file_string => '# THIS FILE IS MANAGED BY PUPPET',
-          }}
+          let(:params) do
+            {
+              config_file_string: '# THIS FILE IS MANAGED BY PUPPET'
+            }
+          end
 
           it do
             is_expected.to contain_file('common.conf').with(
               'ensure'  => 'present',
-              'content' => /THIS FILE IS MANAGED BY PUPPET/,
-              'require' => nil,
+              'content' => %r{THIS FILE IS MANAGED BY PUPPET},
+              'require' => nil
             )
           end
         end
