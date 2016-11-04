@@ -1,21 +1,19 @@
 require 'spec_helper'
 
 describe 'common', type: :class do
-  ['Debian'].each do |osfamily|
-    let(:facts) do
-      {
-        osfamily: osfamily
-      }
-    end
+  on_supported_os.each do |os, facts|
+    context "on #{os}" do
+      let(:facts) do
+        facts
+      end
 
-    it { is_expected.to compile.with_all_deps }
-    it { is_expected.to contain_anchor('common::begin') }
-    it { is_expected.to contain_class('common::params') }
-    it { is_expected.to contain_class('common::install') }
-    it { is_expected.to contain_class('common::config') }
-    it { is_expected.to contain_anchor('common::end') }
+      it { is_expected.to compile.with_all_deps }
+      it { is_expected.to contain_anchor('common::begin') }
+      it { is_expected.to contain_class('common::params') }
+      it { is_expected.to contain_class('common::install') }
+      it { is_expected.to contain_class('common::config') }
+      it { is_expected.to contain_anchor('common::end') }
 
-    context "on #{osfamily}" do
       # describe 'common::install' do
       #   context 'defaults' do
       #     it do
