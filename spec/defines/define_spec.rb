@@ -1,40 +1,45 @@
 require 'spec_helper'
 
-describe 'common::define', :type => :define do
-  ['Debian'].each do |osfamily|
-    let(:facts) {{
-      :osfamily => osfamily,
-    }}
-    let(:pre_condition) { 'include common' }
-    let(:title) { 'group' }
+describe 'common::define', type: :define do
+  on_supported_os.each do |os, facts|
+    context "on #{os}" do
+      let(:facts) do
+        facts
+      end
 
-    context "on #{osfamily}" do
+      let(:pre_condition) { 'include common' }
+      let(:title) { 'group' }
+
       context 'when source file' do
-        let(:params) {{
-          :config_file_path   => '/etc/group.2nd',
-          :config_file_source => 'puppet:///modules/common/etc/group',
-        }}
+        let(:params) do
+          {
+            config_file_path: '/etc/group.2nd',
+            config_file_source: 'puppet:///modules/common/etc/group'
+          }
+        end
 
         it do
           is_expected.to contain_file('define_group').with(
             'ensure'  => 'present',
             'source'  => 'puppet:///modules/common/etc/group',
-            'require' => nil,
+            'require' => nil
           )
         end
       end
 
       context 'when content string' do
-        let(:params) {{
-          :config_file_path   => '/etc/group.3rd',
-          :config_file_string => '# THIS FILE IS MANAGED BY PUPPET',
-        }}
+        let(:params) do
+          {
+            config_file_path: '/etc/group.3rd',
+            config_file_string: '# THIS FILE IS MANAGED BY PUPPET'
+          }
+        end
 
         it do
           is_expected.to contain_file('define_group').with(
             'ensure'  => 'present',
-            'content' => /THIS FILE IS MANAGED BY PUPPET/,
-            'require' => nil,
+            'content' => %r{THIS FILE IS MANAGED BY PUPPET},
+            'require' => nil
           )
         end
       end
