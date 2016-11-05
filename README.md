@@ -1,10 +1,11 @@
 # common
 
 [![Build Status](https://travis-ci.org/dhoppe/puppet-common.png?branch=master)](https://travis-ci.org/dhoppe/puppet-common)
+[![Code Coverage](https://coveralls.io/repos/github/dhoppe/puppet-common/badge.svg?branch=master)](https://coveralls.io/github/dhoppe/puppet-common)
 [![Puppet Forge](https://img.shields.io/puppetforge/v/dhoppe/common.svg)](https://forge.puppetlabs.com/dhoppe/common)
-[![Puppet Forge](https://img.shields.io/puppetforge/dt/dhoppe/common.svg)](https://forge.puppetlabs.com/dhoppe/common)
-[![Puppet Forge](https://img.shields.io/puppetforge/mc/dhoppe.svg)](https://forge.puppetlabs.com/dhoppe)
-[![Puppet Forge](https://img.shields.io/puppetforge/rc/dhoppe.svg)](https://forge.puppetlabs.com/dhoppe)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/dhoppe/common.svg)](https://forge.puppetlabs.com/dhoppe/common)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/dhoppe/common.svg)](https://forge.puppetlabs.com/dhoppe/common)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/dhoppe/common.svg)](https://forge.puppetlabs.com/dhoppe/common)
 
 #### Table of Contents
 
